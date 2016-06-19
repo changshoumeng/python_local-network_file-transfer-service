@@ -1,10 +1,13 @@
 what is this service?
 
-Sometimes we need to send a file from one computer to another, or download it,Build the FTP service complex or not allowed, but file transfer is a tiny thing, so I use Python to write the file transfer service, the code is very simple, applicable to the LAN, help you to facilitate the realization of file transfer.
+Sometimes we need to send a file from one computer to another, or download it,
+Build the FTP service complex or not allowed, but file transfer is a tiny thing,
+ so I use Python to write the file transfer service, the code is very simple, 
+applicable to the LAN, help you to facilitate the realization of file transfer.
 
 
 
-how to user this service ?
+how to use this service ?
 
 server:
 -------------------------
