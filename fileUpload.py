@@ -40,6 +40,7 @@ class FileTransferClient(FileTransferContext):
     def sendFileUploadReq(self):
         req = FILE_TRANSFER_PACKET()
         req.muCmd = FILE_CMD.CMD_FILE_UPLOAD_REQ
+        req.mu32BitField = CONFIG.max_body_size
         body = dict()
         body["fileName"] = self.fileBaseName
         body["fileSize"] = self.fileTotalSize

@@ -46,6 +46,7 @@ class FileTransferClient(FileTransferContext):
     def sendFileDownloadReq(self):
         req = FILE_TRANSFER_PACKET()
         req.muCmd = FILE_CMD.CMD_FILE_DOWNLOAD_REQ
+        req.mu32BitField = CONFIG.max_body_size
         body = dict()
         body["fileName"] = self.filePath
         body_str = json.dumps(body)
@@ -121,9 +122,6 @@ def main():
     ip=CONFIG.server_ip
     port = CONFIG.server_port
     fn=sys.argv[1]
-    if not os.path.exists(fn):
-        print "cannot find file:",fn
-        return
     f = FileTransferClient(ip,port,fn)
     isOK = f.start()
     if isOK == False:

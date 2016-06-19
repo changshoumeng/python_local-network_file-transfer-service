@@ -3,7 +3,7 @@
 import os
 from TcpConnector import *
 from protocol_filetransfer import *
-
+from config import *
 
 
 class TcpClient(TcpConnector):
@@ -19,7 +19,7 @@ class TcpClient(TcpConnector):
         net_head_data=leftBuffer[0:FILE_TRANSFER_HEAD.getSize()]
         net_head = FILE_TRANSFER_HEAD()
         net_head.unpack(net_head_data)
-        if net_head.muSize > COMMON.MAX_PACKET_SIZE  or   net_head.muSize < COMMON.MIN_PACKET_SIZE:
+        if net_head.muSize > CONFIG.max_packet_size  or   net_head.muSize < COMMON.MIN_PACKET_SIZE:
             print "[TcpClient] unpackFromBuffer packetSize:{0} error:".format(net_head.muSize)
             return -1
         if leftSize < net_head.muSize:

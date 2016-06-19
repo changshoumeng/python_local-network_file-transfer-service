@@ -45,7 +45,7 @@ class FileTransferContext(object):
             self.transferedSize=0
             self.transferSeqNumUpLimit=self.fileTotalSize/self.fileChunkSize + 1
             self.workStatus=1
-            print "initTransferInfo {0} fileName:{1} fileSize:{2}".format(self.contextName,self.fileBaseName,self.fileTotalSize)
+            print "initTransferInfo {0} fileName:{1} fileSize:{2} fileChunkSize:{3}".format(self.contextName,self.fileBaseName,self.fileTotalSize,self.fileChunkSize)
             return True
         except:
             print "initTransferinfo failed:",traceback.print_exc()

@@ -26,7 +26,7 @@ class TcpFrontWorker(TcpAcceptor):
         net_head_data = leftBuffer[0:FILE_TRANSFER_HEAD.getSize()]
         net_head = FILE_TRANSFER_HEAD()
         net_head.unpack(net_head_data)
-        if net_head.muSize > COMMON.MAX_PACKET_SIZE or net_head.muSize < COMMON.MIN_PACKET_SIZE:
+        if net_head.muSize > CONFIG.max_packet_size or net_head.muSize < COMMON.MIN_PACKET_SIZE:
             dump_log( "[TcpClient] unpackFromBuffer packetSize:{0} error:".format(net_head.muSize) )
             return -1
         if leftSize < net_head.muSize:
@@ -62,6 +62,7 @@ class TcpFrontWorker(TcpAcceptor):
             self.fileTransferContext = FileTransferContext()
             self.fileTransferContext.transferType = FileTransferContext.TRANSFER_TYPE_RECV
             self.fileTransferContext.tmpdir = CONFIG.tempdir
+            self.fileTransferContext.fileChunkSize = req.mu32BitField
             self.fileTransferContext.fileBaseName=j["fileName"]
             self.fileTransferContext.fileTotalSize=j["fileSize"]
             if  self.fileTransferContext.fileTotalSize == 0:
@@ -132,7 +133,7 @@ class TcpFrontWorker(TcpAcceptor):
             self.fileTransferContext = FileTransferContext()
             self.fileTransferContext.transferType = FileTransferContext.TRANSFER_TYPE_SEND
             self.fileTransferContext.tmpdir = CONFIG.tempdir
-            self.fileTransferContext.fileChunkSize=COMMON.PACKET_BODY_SIZE
+            self.fileTransferContext.fileChunkSize=req.mu32BitField
             fileName=j["fileName"]
             fileBaseName=os.path.basename(fileName)
             if fileName == fileBaseName:
