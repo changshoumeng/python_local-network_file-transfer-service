@@ -1,2 +1,31 @@
-11
-22
+what is this service?
+
+Sometimes we need to send a file from one computer to another, or download it,Build the FTP service complex or not allowed, but file transfer is a tiny thing, so I use Python to write the file transfer service, the code is very simple, applicable to the LAN, help you to facilitate the realization of file transfer.
+
+
+
+how to user this service ?
+
+server:
+-------------------------
+python fileServer.py
+
+client:
+--------------------------
+python fileDownload.py your_file_name
+note: your_file_name is a file from server,make sure file_path existed in server
+
+
+python fileUpload.py  your_file_name
+note:your_file_name is a file at your local computer.
+
+
+so ,this is simple.
+
+
+author:
+-----------
+I am Croco.
+
+
+
